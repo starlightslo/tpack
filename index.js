@@ -142,10 +142,8 @@ mkdir(PROJECT_PATH)
 })
 .then(success => {
 	console.log('Creating all env files: ' + success);
+	console.log('Done!!!');
 })
 .catch(err => {
 	console.error(err);
-})
-.finally(() => {
-	console.log('Done!!!');
 });
