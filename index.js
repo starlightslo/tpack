@@ -6,8 +6,9 @@ const ncp = require('ncp').ncp;
 ncp.limit = 16;
 
 const CURRENT_PATH = process.cwd() + '/';
-const TEMPLATE_PATH = CURRENT_PATH + 'template-files/';
-const DATA_PATH = CURRENT_PATH + 'data/';
+const WORKING_PATH = __dirname + '/';
+const TEMPLATE_PATH = WORKING_PATH + 'template-files/';
+const DATA_PATH = WORKING_PATH + 'data/';
 
 const PACKAGE_JSON = 'package.json';
 const CONFIG_DATA = 'config.ts';
