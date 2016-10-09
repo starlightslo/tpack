@@ -5,7 +5,7 @@ const fs = require('fs');
 const ncp = require('ncp').ncp;
 ncp.limit = 16;
 
-const CURRENT_PATH = __dirname + '/';
+const CURRENT_PATH = process.cwd() + '/';
 const TEMPLATE_PATH = CURRENT_PATH + 'template-files/';
 const DATA_PATH = CURRENT_PATH + 'data/';
 
@@ -97,7 +97,6 @@ readFile(DATA_PATH + CONFIG_DATA)
 .then(data => {
 	// Replace appName
 	data = data.replace(/<%=appName%>/g, appName);
-	console.log(data);
 	return writeFile(PROJECT_PATH + 'src/server/config/' + CONFIG_DATA, data);
 })
 .then(success => {
