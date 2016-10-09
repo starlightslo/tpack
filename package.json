@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "ncp": "^2.0.0"
+  },
+  "bin": {
+  	"snippet": "./index.js"
   }
 }
