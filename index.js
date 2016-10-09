@@ -57,7 +57,18 @@ const parseArgv = function(argv) {
 		}
 	});
 	return argvData;
-}
+};
+const copyTemplateFiles = function(originalFolder, destinationFolder) {
+	return new Promise((resolve, reject) => {
+		ncp(originalFolder, destinationFolder, function (err) {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(true);
+			}
+		});
+	});
+};
 
 let argv = process.argv.slice(2);
 const project = argv[0];
@@ -70,17 +81,19 @@ if (argv.name && argv.name.length > 0) {
 const PROJECT_PATH = CURRENT_PATH + project + '/';
 
 // Create project folder
-mkdir(PROJECT_PATH);
-// Copy all template files
-ncp(TEMPLATE_PATH, PROJECT_PATH, function (err) {
-	if (err) {
-		return console.error(err);
-	}
-	console.log('Copy template file done!');
-});
+mkdir(PROJECT_PATH)
+.then(() => {
+	console.log('Create porject folder success.');
 
-// Create package.json
-readFile(DATA_PATH + PACKAGE_JSON)
+	// Copy all template files
+	return copyTemplateFiles(TEMPLATE_PATH, PROJECT_PATH);
+})
+.then(success => {
+	console.log('Copy template file: ' + success);
+
+	// Create package.json
+	return readFile(DATA_PATH + PACKAGE_JSON);
+})
 .then(data => {
 	let packageJson = JSON.parse(data);
 	packageJson.name = project;
@@ -88,13 +101,10 @@ readFile(DATA_PATH + PACKAGE_JSON)
 })
 .then(success => {
 	console.log('Creating package.json: ' + success);
-})
-.catch(err => {
-	console.error(err);
-})
 
-// Create config.ts
-readFile(DATA_PATH + CONFIG_DATA)
+	// Create config.ts
+	return readFile(DATA_PATH + CONFIG_DATA);
+})
 .then(data => {
 	// Replace appName
 	data = data.replace(/<%=appName%>/g, appName);
@@ -102,13 +112,10 @@ readFile(DATA_PATH + CONFIG_DATA)
 })
 .then(success => {
 	console.log('Creating config.ts: ' + success);
-})
-.catch(err => {
-	console.error(err);
-})
 
-// Create testing files
-readFile(DATA_PATH + TEST_DATA)
+	// Create testing files
+	return readFile(DATA_PATH + TEST_DATA);
+})
 .then(data => {
 	// Replace appName
 	data = data.replace(/<%=appName%>/g, appName);
@@ -116,13 +123,10 @@ readFile(DATA_PATH + TEST_DATA)
 })
 .then(success => {
 	console.log('Creating test.ts: ' + success);
-})
-.catch(err => {
-	console.error(err);
-})
 
-// Create all env files
-readFile(DATA_PATH + ENV_DATA)
+	// Create all env files
+	return readFile(DATA_PATH + ENV_DATA);
+})
 .then(data => {
 	// Replace appName
 	data = data.replace(/<%=appName%>/g, appName);
@@ -142,3 +146,6 @@ readFile(DATA_PATH + ENV_DATA)
 .catch(err => {
 	console.error(err);
 })
+.finally(() => {
+	console.log('Done!!!');
+});
