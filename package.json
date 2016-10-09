@@ -13,6 +13,6 @@
     "ncp": "^2.0.0"
   },
   "bin": {
-  	"snippet": "./index.js"
+  	"tpack": "./index.js"
   }
 }
