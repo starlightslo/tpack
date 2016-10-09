@@ -1,0 +1,15 @@
+{
+  "name": "tpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tony Huang <tony@huang.ninja> (http://huang.ninja)",
+  "license": "ISC",
+  "dependencies": {
+    "ncp": "^2.0.0"
+  }
+}

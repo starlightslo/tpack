@@ -1,0 +1,29 @@
+/// <reference path="../../../../typings/tsd.d.ts" />
+
+module.exports = {
+	port: process.env.PORT || 8000,
+	secret: '0123456789abcdefghijklmnopqustuvwxyz',		// Should more than 32 characters
+	logConfig: {
+		name: '<%=appName%>',
+		env: '<%=env%>',
+		streams: [{
+			level: 'trace',
+			stream: process.stdout
+		},{
+			level: 'debug',
+			path: 'logs/debug.log'
+		},{
+			level: 'info',
+			path: 'logs/info.log'
+		},{
+			level: 'warn',
+			path: 'logs/warn.log'
+		}, {
+			level: 'error',
+			path: 'logs/error.log'
+		}, {
+			level: 'fatal',
+			path: 'logs/fatal.log'
+		}]
+	}
+};
