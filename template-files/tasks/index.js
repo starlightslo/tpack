@@ -30,6 +30,19 @@ gulp.task(tasks.BUILD, [
 	tasks.JSHINT
 ]);
 
+// Build Release
+gulp.task(tasks.RELEASE, [
+	tasks.SERVER_TS_DIST,
+	tasks.CLIENT_JS_DIST,
+	tasks.CLIENT_CSS_DIST,
+	tasks.CLIENT_IMAGE_DIST,
+	tasks.CLIENT_FONT_DIST,
+	tasks.CLIENT_VIEWS_DIST,
+	tasks.CLIENT_TEMPLATES_DIST,
+	tasks.JSHINT,
+	tasks.BUMP
+]);
+
 // Default Task
 gulp.task('default', [
 	tasks.SERVER,

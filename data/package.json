@@ -9,13 +9,15 @@
     "dev": "TZ=UTC NODE_ENV=dev node_modules/.bin/gulp",
     "beta": "TZ=UTC NODE_ENV=beta node_modules/.bin/gulp",
     "production": "TZ=UTC NODE_ENV=production node_modules/.bin/gulp",
-    "build": "TZ=UTC node_modules/.bin/gulp build"
+    "build": "TZ=UTC node_modules/.bin/gulp build",
+    "release": "TZ=UTC node_modules/.bin/gulp release"
   },
   "author": "Tony Huang <tony@huang.ninja>",
   "license": "ISC",
   "devDependencies": {
     "code": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-bump": "^2.4.0",
     "gulp-clean-css": "^2.0.7",
     "gulp-file-cache": "0.0.1",
     "gulp-htmlmin": "^2.0.0",
@@ -26,7 +28,8 @@
     "gulp-typescript": "^2.13.0",
     "gulp-uglify": "^1.5.3",
     "lab": "^10.7.1",
-    "require-dir": "^0.3.0"
+    "require-dir": "^0.3.0",
+    "yargs": "^6.3.0"
   },
   "dependencies": {
     "boom": "^3.2.2",

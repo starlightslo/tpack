@@ -24,7 +24,8 @@ exports.path = {
 	SERVER_TS: './src/server/**/*.ts',
 	INDEX: './out/server/index.js',
 	SERVER_DIST: './out',
-	TS_CONFIG: './tsconfig.json'
+	TS_CONFIG: './tsconfig.json',
+	PACKAGE_JSON: './package.json'
 };
 
 exports.tasks = {
@@ -38,5 +39,7 @@ exports.tasks = {
 	SERVER: 'server',
 	WATCH: 'watch',
 	JSHINT: 'jshint',
-	BUILD: 'build'
+	BUILD: 'build',
+	BUMP: 'bump',
+	RELEASE: 'release'
 };
